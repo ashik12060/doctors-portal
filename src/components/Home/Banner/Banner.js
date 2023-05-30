@@ -20,13 +20,13 @@ const verticalCenter = {
 const Banner = () => {
     return (
         <Container style={bannerBg} sx={{flexGrow: 1 }}>
-            <Grid container spacing={2}>
-            <Grid style={{...verticalCenter,textAlign:'left', paddingLeft:15}} xs={12} md={6} >
+            <Grid  container spacing={2}>
+            <Grid  style={{...verticalCenter,textAlign:'left', paddingLeft:15}} xs={12} md={6} >
                 <Box>
                 <Typography variant="h3" >
                     Your New Smile <br/> Starts Here
                 </Typography>
-                <Typography variant="h6" sx={{my:3,fontSize:14, color:'gray', fontWeight:300}}>
+                <Typography  variant="h6" sx={{my:3,fontSize:14, color:'gray', fontWeight:300}}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing export default class 
                 lorem23P
                 Lorem ipsum dolor sit amet, consectetur adipiscing export default class 
@@ -45,4 +45,4 @@ const Banner = () => {
     )
 }
 
-export default Banner
+export default Banner;

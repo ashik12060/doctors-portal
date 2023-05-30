@@ -1,5 +1,4 @@
 import React from 'react'
-import { experimentalStyled as styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { Container, Typography } from '@mui/material';
@@ -8,32 +7,34 @@ import fluoride from '../../../images/fluoride.png';
 import cavity from '../../../images/cavity.png';
 import whitening from '../../../images/whitening.png';
 
-const services = [
-    {
-        "userId": 1,
-        "id": 1,
-        "title": "delectus aut autem",
-        "completed": false,
-        img: fluoride
-    },
-    {
-        "userId": 1,
-        "id": 2,
-        "title": "quis ut nam facilis et officia qui",
-        "completed": false,
-        img: cavity
-    },
-    {
-        "userId": 1,
-        "id": 3,
-        "title": "fugiat veniam minus",
-        "completed": false,
-        img: whitening
-    },
-]
+
 
 
 const Services = () => {
+    const allServices = [
+        {
+            "userId": 1,
+            "id": 1,
+            "title": "delectus aut autem",
+            "completed": false,
+            img: fluoride
+        },
+        {
+            "userId": 1,
+            "id": 2,
+            "title": "quis ut nam facilis et officia qui",
+            "completed": false,
+            img: cavity
+        },
+        {
+            "userId": 1,
+            "id": 3,
+            "title": "fugiat veniam minus",
+            "completed": false,
+            img: whitening
+        },
+    ];
+    
     return (
         <Container>
             <Box sx={{ flexGrow: 1 }}>
@@ -45,7 +46,7 @@ const Services = () => {
                 </Typography>
                 <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
                     {
-                        services.map((service) => <Service
+                        allServices.map((service) => <Service
                             key={service.id}
                             service={service}
                         ></Service>)
@@ -56,4 +57,4 @@ const Services = () => {
     )
 }
 
-export default Services
+export default Services;
