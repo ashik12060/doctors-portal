@@ -6,7 +6,7 @@ import useAuth from '../../../hooks/useAuth';
 
 const Login = () => {
     const [loginData, setLoginData] = useState({});
-    const {user, authError,isLoading,loginUser} = useAuth();
+    const {user, authError, signInWithGoogle, isLoading,loginUser} = useAuth();
 
     const location = useLocation();
     const navigate = useNavigate();
@@ -23,7 +23,12 @@ const Login = () => {
     const handleLoginSubmit = (e) => {
         loginUser(loginData.email, loginData.password, location, navigate)
         e.preventDefault();
+    };
+  
+    const handleGoogleSignIn = ()=>{
+        signInWithGoogle(location, navigate)
     }
+     
     return (
         <Container>
             <Grid container spacing={2}>
@@ -62,12 +67,14 @@ const Login = () => {
                         <NavLink
                             style={{ textDecoration: 'none'  }}
                             to="/register">
-                            New User? Please Register</NavLink>
+                            <Button variant='text'>New User? Please Register</Button></NavLink>
                             {isLoading && <CircularProgress />}
                     {user?.email && <Alert severity="success">Congratulations! User Login Successfully</Alert>}
                     {authError && <Alert severity="error">{authError}</Alert>}
 
                     </form>
+                    <p>-----------------------------------------</p>
+                    <Button onClick={handleGoogleSignIn} variant='contained'>Google Sign in</Button>
 
                    
                 </Grid>

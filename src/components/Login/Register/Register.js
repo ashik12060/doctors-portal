@@ -2,7 +2,7 @@ import { Container, Grid, TextField, Typography, Button,CircularProgress, Alert 
 
 import React, { useState } from 'react'
 import img from '../../../images/login.png';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 
 
@@ -10,8 +10,9 @@ const Register = () => {
 
     const [loginData, setLoginData] = useState({});
     const {user,registerUser, isLoading,authError} = useAuth();
+    const navigate = useNavigate();
 
-    const handleOnChange = (e) => {
+    const handleOnBlur = (e) => {
         const field = e.target.name;
         const value = e.target.value;
         const newLoginData = { ...loginData };
@@ -25,7 +26,7 @@ const Register = () => {
             return;
         }
         
-        registerUser(loginData.email, loginData.password);
+        registerUser(loginData.name, loginData.email, loginData.password,navigate);
         console.log(loginData.email, loginData.password);
      
         e.preventDefault();
@@ -41,12 +42,21 @@ const Register = () => {
                     <hr style={{width:150, borderBottom:'1px solid black'}}/>
                     {!isLoading && <form onSubmit={handleLoginSubmit}>
                         <TextField
+                            sx={{ width: '75%', mb: 5  }}
+                            id="standard-basic"
+                            label="Your name"
+                            type="text"
+                            name="name"
+                            onBlur={handleOnBlur}
+                            variant="standard"
+                            required />
+                        <TextField
                             sx={{ width: '75%' }}
                             id="standard-basic"
                             label="Your email"
                             type="email"
                             name="email"
-                            onChange={handleOnChange}
+                            onBlur={handleOnBlur}
                             variant="standard"
                             required />
 
@@ -57,7 +67,7 @@ const Register = () => {
                             label="Your password"
                             type='password'
                             name="password"
-                            onChange={handleOnChange}
+                            onBlur={handleOnBlur}
                             variant="standard"
                             required />
                         <TextField
@@ -66,7 +76,7 @@ const Register = () => {
                             label="Retype Your password"
                             type='password'
                             name="password2"
-                            onChange={handleOnChange}
+                            onBlur={handleOnBlur}
                             variant="standard"
                             required />
                         <br />
@@ -78,7 +88,7 @@ const Register = () => {
                         <NavLink
                             style={{ textDecoration: 'none'  }}
                             to="/login">
-                            Already registered? Please Login</NavLink>
+                            <Button variant='text'>Already Registered? Please Log in</Button></NavLink>
 
                     </form>}
                     {isLoading && <CircularProgress />}
