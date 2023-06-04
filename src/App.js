@@ -6,6 +6,10 @@ import Login from './components/Login/Login/Login';
 import Register from './components/Login/Register/Register';
 import AuthProvider from './context/AuthProvider/AuthProvider';
 import PrivateRoute from './components/Login/PrivateRoute/PrivateRoute';
+import Dashboard from './Dashboard/Dashboard/Dashboard';
+import NotFound from './NotFound/NotFound';
+import MakeAdmin from './Dashboard/MakeAdmin/MakeAdmin';
+import AddDoctor from './Dashboard/AddDoctor/AddDoctor';
 
 function App() {
   return (
@@ -19,10 +23,18 @@ function App() {
 
         {/* private route */}
         <Route path='/appointment' element={<PrivateRoute><Appointment/></PrivateRoute>}></Route>
+        
+        {/* nested routing */}
+        <Route path='/dashboard' element={<PrivateRoute><Dashboard/></PrivateRoute>}>
+        <Route path='/dashboard/makeAdmin' element={<MakeAdmin></MakeAdmin>}></Route>
+        <Route path='/dashboard/addDoctor' element={<AddDoctor></AddDoctor>}></Route>
+        </Route>
+        
 
         
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/register" element={<Register></Register>}></Route>
+        <Route path="*" element={<NotFound></NotFound>}></Route>
 
       </Routes>
 

@@ -26,7 +26,8 @@ const Login = () => {
     };
   
     const handleGoogleSignIn = ()=>{
-        signInWithGoogle(location, navigate)
+        signInWithGoogle(location, navigate);
+        
     }
      
     return (
